@@ -6,9 +6,9 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Library>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Card>
  */
-class LibraryFactory extends Factory
+class CardFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,8 @@ class LibraryFactory extends Factory
     public function definition()
     {
         return [
-            "name" => $this->faker->name,
-            "address" => $this->faker->address,
-            "postal_code" => $this->faker->postcode,
+            "user_id"=> $this->faker->randomElement(User::all()),
+            "membership" => $this->faker->randomElement(['VIP', 'Irregular', 'Regular']),
         ];
     }
 }

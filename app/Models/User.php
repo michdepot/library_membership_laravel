@@ -50,5 +50,9 @@ class User extends Authenticatable
         return $this->belongsTo(Library::class);
     }
 
-    
+    public function card()
+    {
+        return $this->hasOne(Card::class);
+    }
+
 }

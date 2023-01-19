@@ -35,7 +35,10 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Author::create([
+            "name" => $request->name,
+            "library_id"=> $request->library_id
+        ]);
     }
 
     /**
@@ -44,9 +47,9 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show($id)
     {
-        //
+        return Author::findOrFal($id);
     }
 
     /**
@@ -67,9 +70,12 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, $id)
     {
-        //
+        return Author::find($id)->update([
+            "name" => $request->name,
+            "library_id"=> $request->library_id
+        ]);
     }
 
     /**
@@ -78,9 +84,9 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy($id)
     {
-        //
+        return Author::find($id)->delete();
     }
 
 }

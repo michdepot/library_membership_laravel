@@ -23,7 +23,15 @@ class Book extends Model
         return $this->belongsToMany(Author::class);
     }
 
+
+
+
+
+
+
+    
+
     // $author->books()->attach($book) //ingani add ug item sa author_book nga table
     // $author->books()->attach([2,3,4]) //ingani kung daghan iadd na item
-    // $b->authors()->sync([3=>['author_id'=>2]])
+    // $b->authors()->sync([3=>['author_id'=>2]], false) //false para di ma detach ang uban sa pivot table
 }

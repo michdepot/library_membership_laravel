@@ -65,6 +65,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            "name" => 'required',
+            "email" => 'required|email',
+            "password" => 'required|min:6'
+        ]);
+
         return User::find($id)->update([
             "name" => $request->name,
             "email" => $request->email,
@@ -83,8 +89,4 @@ class UserController extends Controller
         return User::find($id)->delete();
     }
 
-    // public function logout_user()
-    // {
-    //     auth()->user()->tokens()->delete();
-    // }
 }

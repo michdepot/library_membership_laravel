@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,17 +25,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:sanctum', 'verifyemail'])->group(function () {
-    Route::apiResource('user', UserController::class);
+    Route::apiResource('users', UserController::class);
+    Route::apiResource('books', BookController::class);
+    Route::apiResource('authors', AuthController::class);
+
+    Route::post('createcard', [CardController::class, 'createCard']);
+    Route::get('cards/{id}', [CardController::class, 'showCard']);
 });
+
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::put('verify/{id}', [AuthController::class, 'verify']);
-    Route::apiResource('books', BookController::class);
 });
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [UserController::class, 'store']);
-
-// Route::post('logout', [UserController::class, 'logout_user']);
-
 

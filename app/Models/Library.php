@@ -15,10 +15,8 @@ class Library extends Model
 
     protected $fillable = [
         "name",
-        "membership",
         "address",
         "postal_code",
-        "user_id"
     ];
 
     public function users()
@@ -36,12 +34,4 @@ class Library extends Model
         return $this->hasMany(Author::class);
     }
 
-    public function author_book()
-    {
-        $books = Book::all();
-
-        $authors = Author::all();
-
-        return $books->attach($authors);
-    }
 }
