@@ -41,7 +41,6 @@ class BookController extends Controller
             'price' => $request->price,
             'publisher' => $request->publisher,
             'library_id' => $request->library_id,
-            'author_id' => $request->author_id
         ]);
     }
 
@@ -82,7 +81,6 @@ class BookController extends Controller
             'price' => $request->price,
             'publisher' => $request->publisher,
             'library_id' => $request->library_id,
-            'author_id' => $request->author_id
         ]);
     }
 

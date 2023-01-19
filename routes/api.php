@@ -35,6 +35,6 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [UserController::class, 'store']);
 
-Route::post('sync', [AuthorController::class, 'sync_author_book']);
+// Route::post('logout', [UserController::class, 'logout_user']);
 
 

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -27,30 +26,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // try {
-        //     $request->validate([
-        //         "name" => 'required',
-        //         "email" => 'required|email',
-        //         "password" => 'required|min:6'
-        //     ]);
 
-        //     User::create([
-        //         "name" => $request->name,
-        //         "email" => $request->email,
-        //         "password" => Hash::make($request->password),
-        //     ]);
-
-        //     return response()->json([
-        //         "message" => "User registered successfully!"
-        //     ], 202);
-        // } catch (QueryException $e){
-        //     $errorCode = $e->errorInfo[1];
-        //     if($errorCode == 1062){
-        //         return response()->json([
-        //             "error" => "Email already exists"
-        //         ], 422);
-        //     }
-        // }
         $request->validate([
             "name" => 'required',
             "email" => 'required|email',
@@ -106,4 +82,9 @@ class UserController extends Controller
     {
         return User::find($id)->delete();
     }
+
+    // public function logout_user()
+    // {
+    //     auth()->user()->tokens()->delete();
+    // }
 }
