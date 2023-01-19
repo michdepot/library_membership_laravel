@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,11 +30,11 @@ Route::middleware(['auth:sanctum', 'verifyemail'])->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::put('verify/{id}', [AuthController::class, 'verify']);
     Route::apiResource('books', BookController::class);
-    Route::get('authors', [AuthController::class, 'index']);
 });
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [UserController::class, 'store']);
 
+Route::post('sync', [AuthorController::class, 'sync_author_book']);
 
 

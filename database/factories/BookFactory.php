@@ -24,7 +24,6 @@ class BookFactory extends Factory
             "price" => $this->faker->randomFloat(2, 10, 500),
             "publisher" => $this->faker->company,
             "library_id" => Library::first(),
-            "author_id" => $this->faker->randomElement(Author::all()),
         ];
     }
 }

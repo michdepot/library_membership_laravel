@@ -20,7 +20,6 @@ return new class extends Migration
             $table->double('price');
             $table->string('publisher');
             $table->unsignedBigInteger('library_id');
-            $table->unsignedBigInteger('author_id');
             $table->timestamps();
         });
     }
